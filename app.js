@@ -10,8 +10,9 @@ var app = express();
 
 app.use(express.static(__dirname+"/public"));
 
-app.get('/hello.txt', function(req, res){
-	res.end("Hello World!");
+app.get('/hello.txt/:name?', function(req, res){
+	var name = req.param('name', "World");
+	res.end("Hello "+name+"!");
 });
 
 app.get('/hello.html', function(req, res){
